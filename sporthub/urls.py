@@ -25,6 +25,7 @@ urlpatterns = [
     path('addturf/',views.addturf),
     path('turfadd/',views.turf_add),
     path('viewturf/',views.view_turf),
+    path('removeturf/<int:id>',views.remove_turf),
 ]
 
 if settings.DEBUG:
