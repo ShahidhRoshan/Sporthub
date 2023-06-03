@@ -35,5 +35,9 @@ def turf_add(request):
         data.save()
     return render(request,"addturf.htm")
 
+def view_turf(request):
+    data=tbl_turf.objects.all()
+    return render(request,"viewturf.htm", {'data1':data})
+
 
 
