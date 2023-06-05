@@ -46,5 +46,30 @@ def remove_turf(request,id):
     return redirect('/viewturf')
 
 
+def edit_turf(request,id):
+    data=tbl_turf.objects.get(id=id)
+    return render(request,"editturf.htm",{'data1':data})
+
+
+
+
+
+
+
+def update_turf(request,id):
+    data=tbl_turf.objects.get(id=id)
+    data.turf_name=request.POST.get('Turfname')
+    data.contact_no=request.POST.get('contactnumber')
+    data.contact_no=request.POST.get('email')
+    data.contact_no=request.POST.get('workinghrs')
+    data.contact_no=request.POST.get('location')
+    data.contact_no=request.POST.get('fee')
+    
+    data.save()
+    return redirect('/viewturf')
+    
+
+
+
 
 
