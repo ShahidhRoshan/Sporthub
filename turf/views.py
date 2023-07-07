@@ -7,18 +7,18 @@ from django.db import models
 
 
 def turfowner(request):
-    return render(request,"turfowner.htm")
+    return render(request,"turfowner1.html")
 
 
 def addturf(request):
-    return render(request,"addturf.htm")
+    return render(request,"addturf1.html")
 
 
 def turf_add(request):
     if request.method == 'POST':
         data = tbl_turf()
         data.turf_id = "na"
-        data.turf_name = request.POST.get('Turfname')
+        data.turf_name = request.POST.get('turfname')
         data.contact_no = request.POST.get('contactnumber')
         data.email = request.POST.get('email')
         data.working_hrs = request.POST.get('workinghrs')
@@ -33,11 +33,11 @@ def turf_add(request):
         data.save()
         data.turf_id = "TF"+str(data.id)
         data.save()
-    return render(request,"addturf.htm")
+    return render(request,"addturf1.html")
 
 def view_turf(request):
     data=tbl_turf.objects.all()
-    return render(request,"viewturf.htm", {'data1':data})
+    return render(request,"viewturf1.html", {'data1':data})
 
 
 def remove_turf(request,id):
@@ -48,7 +48,7 @@ def remove_turf(request,id):
 
 def edit_turf(request,id):
     data=tbl_turf.objects.get(id=id)
-    return render(request,"editturf.htm",{'data1':data})
+    return render(request,"editturf.html",{'data1':data})
 
 
 
@@ -58,12 +58,12 @@ def edit_turf(request,id):
 
 def update_turf(request,id):
     data=tbl_turf.objects.get(id=id)
-    data.turf_name=request.POST.get('Turfname')
+    data.turf_name=request.POST.get('turfname')
     data.contact_no=request.POST.get('contactnumber')
-    data.contact_no=request.POST.get('email')
-    data.contact_no=request.POST.get('workinghrs')
-    data.contact_no=request.POST.get('location')
-    data.contact_no=request.POST.get('fee')
+    data.email=request.POST.get('email')
+    data.working_hrs=request.POST.get('workinghrs')
+    data.location=request.POST.get('location')
+    data.fee=request.POST.get('fee')
     
     data.save()
     return redirect('/viewturf')
